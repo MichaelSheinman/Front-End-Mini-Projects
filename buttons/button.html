@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button {
+            background-color: #FF0000;
+            text-align: center;
+            border: white;
+            padding: 7% 7%;
+            font-size: 4em;
+            font-family: "Times New Roman", Times, serif;
+            margin: 4px 2px;
+            display: inline-block;
+
+        }
+
+        .project {
+            text-align: center;
+            margin-top: 200px;
+                }
+
+        .button:hover{
+          background-color: #800000
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="project">
+
+
+<div id="hello" class="button" onclick="btn01()">Start</div>
+</div>
+
+<script>
+function btn01() {
+document.getElementsByID("hello").innerHTML = "";
+}
+
+</script>
+</body>
+</html>
