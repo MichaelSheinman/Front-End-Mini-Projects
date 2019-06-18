@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+hr {
+    width: 63%;
+    margin-right: 100px;
+
+}
+
+header {
+    column-count: 2;
+}
+
+p {
+    margin-top: 0px;
+}
+
+#big {
+            font-size: 40px;
+            text-align: right;
+            margin-top: 50px;
+            margin-bottom: 0px;
+            padding: 0px;
+            margin-right: 100px;
+            font-family: "Nunito", Times, serif;
+
+        }
+
+.right {
+    text-align: right;
+    margin-right: 100px;
+}
+
+.twenty_f {
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+
+.left_margin {
+    margin-left: 100px;
+}
+
+.hard_align {
+    margin-left: 420px;
+}
+
+.pad {
+    padding: 0 15px;
+}
+
+.normal_font {
+    font-size: 100%;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.margin_500 {
+    margin-left: 111%;
+}
+
+.margin_440 {
+    margin-left: 97%;
+}
+
+.faded {
+    font-size: 130%;
+}
+
+.margin_310 {
+    margin-left: 66%;
+}
+
+.margin_400 {
+    margin-left: 29%;
+}
+
+
+
+.margin_290 {
+    margin-left: 60%;
+}
+
+.margin_255 {
+    margin-left: 26%;
+}
+
+.margin_250 {
+    margin-left: 37%;
+}
+
+
