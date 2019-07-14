@@ -1,37 +1,62 @@
-allCats = {
-    "Lucy": ["cat.jpeg", 0],
-    "Maya": ["cat_two.jpeg", 0],
-    "Nicol": ["cat_three.jpeg", 0],
-    "Rona": ["cat_four.jpg", 0],
-    "Lola": ["cat_five.jpeg", 0] 
-}
-
-function createButtons() {
-let all = "";
-
-for (let cat in allCats) {
-    console.log(cat);
-    all += "<button onclick=\"displayCat('" + cat + "')\">" + cat + "</button>"
-};
-document.getElementById('buttons').innerHTML = all;
-}
-
-createButtons()
-
-function displayCat(name) {
-
-data = allCats[name];
-document.getElementById('cat').src = data[0];
-document.getElementById('name').textContent = name;
-document.getElementById('click').textContent = "Clicks " + allCats[name][1];
+var view = {
+    createButtons: function(allCats) {
+        let all = "";
+    
+        for (let cat in allCats) {
+            console.log(cat);
+            all += "<button id=\"" + cat + "\">" + cat + "</button>"
+        };
+        document.getElementById('buttons').innerHTML = all;
+    },
 
 };
 
-document.getElementById('cat').addEventListener('click', function() {
-    let name = document.getElementById('name').textContent;
-    allCats[name][1] = allCats[name][1] + 1; 
-    document.getElementById('click').textContent = "Clicks " + allCats[name][1];
-});
+
+var octopus = {
+    init: function() {
+        view.createButtons(model.allCats);
+        model.buttonClick();
+        model.imageClick();
+
+    }
+};
 
 
-displayCat("Lola")
+var model = {
+    allCats: {
+        "Lucy": ["images/cat.jpeg", 0],
+        "Maya": ["images/cat_two.jpeg", 0],
+        "Nicol": ["images/cat_three.jpeg", 0],
+        "Rona": ["images/cat_four.jpg", 0],
+        "Lola": ["images/cat_five.jpeg", 0]    
+    },
+
+    buttonClick: function() {
+        for (let cat in model.allCats) {
+            document.getElementById(cat).addEventListener('click', function() {
+                document.getElementById('cat').src = model.allCats[cat][0];
+                document.getElementById('name').innerText = cat;
+                document.getElementById('click').innerText = "Clicks: " + model.allCats[cat][1];
+            })
+        };
+    },
+
+    imageClick: function() { 
+        document.getElementById('cat').addEventListener('click', function() {
+            let cat = document.getElementById('name').innerText;
+            model.allCats[cat][1] = model.allCats[cat][1] + 1;
+            document.getElementById('click').innerText = "Clicks: " + model.allCats[cat][1];
+
+        })
+    }
+
+    // this function adds event listeners 
+
+};
+octopus.init();
+
+
+
+
+
+
