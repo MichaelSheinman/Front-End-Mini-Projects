@@ -1,4 +1,11 @@
 var view = {
+    init: function() {
+        this.image = document.getElementById('cat');
+        this.name = document.getElementById('name');
+        this.clicks = document.getElementById('click');
+        this.buttons = document.getElementById('buttons');
+    },
+
     createButtons: function(allCats) {
         let all = "";
     
@@ -6,18 +13,28 @@ var view = {
             console.log(cat);
             all += "<button id=\"" + cat + "\">" + cat + "</button>"
         };
-        document.getElementById('buttons').innerHTML = all;
+        this.buttons.innerHTML = all;
     },
+
+    // this render function makes the page changes 
+    render: function(cat) {
+        this.image.src = model.allCats[cat][0];
+        this.name.innerText = cat;
+        this.clicks.innerText = "Clicks: " + model.allCats[cat][1];
+    }
 
 };
 
-
 var octopus = {
     init: function() {
+        view.init();
         view.createButtons(model.allCats);
         model.buttonClick();
         model.imageClick();
+    },
 
+    display: function(cat) {
+        view.render(cat);
     }
 };
 
@@ -34,9 +51,7 @@ var model = {
     buttonClick: function() {
         for (let cat in model.allCats) {
             document.getElementById(cat).addEventListener('click', function() {
-                document.getElementById('cat').src = model.allCats[cat][0];
-                document.getElementById('name').innerText = cat;
-                document.getElementById('click').innerText = "Clicks: " + model.allCats[cat][1];
+                octopus.display(cat)
             })
         };
     },
@@ -45,7 +60,7 @@ var model = {
         document.getElementById('cat').addEventListener('click', function() {
             let cat = document.getElementById('name').innerText;
             model.allCats[cat][1] = model.allCats[cat][1] + 1;
-            document.getElementById('click').innerText = "Clicks: " + model.allCats[cat][1];
+            octopus.display(cat);
 
         })
     }
@@ -54,9 +69,4 @@ var model = {
 
 };
 octopus.init();
-
-
-
-
-
 
