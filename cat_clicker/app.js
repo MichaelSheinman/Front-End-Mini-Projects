@@ -76,6 +76,7 @@ var admin = {
     createField: function(text, value) {
         let name = document.createElement('p');
         name.innerText = text;
+        name.id = "p" + text
         document.body.appendChild(name);
         let b = document.createElement('input');
         b.type = "text";
@@ -94,7 +95,10 @@ var admin = {
         document.body.removeChild(document.querySelector('#Name'));
         document.body.removeChild(document.querySelector('#URL'));        
         document.body.removeChild(document.querySelector('#Clicks'));        
-
+        document.body.removeChild(document.querySelector('#pName'));        
+        document.body.removeChild(document.querySelector('#pURL'));       
+        document.body.removeChild(document.querySelector('#pClicks'));
+        document.body.removeChild(document.querySelector('#submit'));
     }
     
 }
