@@ -56,8 +56,8 @@ var admin = {
         document.getElementById('admin').addEventListener('click', function() {
             console.log(admin.isAdmin);
             if (admin.isAdmin == false) {
-                console.log("hey")
                 octopus.addAdmin();
+                admin.isAdmin = true;
             };
         });
     },
@@ -88,6 +88,7 @@ var admin = {
     submitClick: function() {
         document.getElementById('submit').addEventListener('click', function() {
             admin.clearField();
+            admin.isAdmin = false;
         })
     },
 
