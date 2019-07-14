@@ -33,15 +33,44 @@ var view = {
 
     imageClick: function() { 
         document.getElementById('cat').addEventListener('click', function() {
-            let cat = document.getElementById('name').innerText;
+            let cat = view.getCatName();
             model.allCats[cat][1] = model.allCats[cat][1] + 1;
             view.render(cat);
-
         })
+    },
+    getCatName: function() {
+        return document.getElementById('name').innerText;
     }
 
 
 };
+
+
+var admin = {
+    init: function() {
+        this.isAdmin = false;
+    },
+
+    enableModel: function(cat, allCats) {
+        this.isAdmin = true;
+        this.createField("Name", cat);
+        this.createField("URL", allCats[cat][0]);
+        this.createField("Clicks", allCats[cat][1]);
+
+        
+        
+    },
+    createField: function(text, value) {
+        let name = document.createElement('p');
+        name.innerText = text;
+        document.body.appendChild(name);
+        let b = document.createElement('input');
+        b.type = "text";
+        b.value = value;
+        document.body.appendChild(b);
+    }
+    
+}
 
 var octopus = {
     init: function() {
@@ -50,6 +79,7 @@ var octopus = {
         view.createButtons(model.allCats);
         view.buttonClick(allCats);
         view.imageClick();
+        admin.enableModel(view.getCatName(), model.allCats);
     }
 };
 
