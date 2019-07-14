@@ -87,10 +87,17 @@ var admin = {
 
     submitClick: function() {
         document.getElementById('submit').addEventListener('click', function() {
+            old_name = document.getElementById('name');
+            new_name = document.getElementById('Name').value;
+            new_url = document.getElementById('URL').value;
+            new_clicks = document.getElementById('Clicks').value;
+            octopus.changeData(old_name, new_name, new_url, new_clicks);
             admin.clearField();
             admin.isAdmin = false;
         })
     },
+
+
 
     clearField: function() {
         document.body.removeChild(document.querySelector('#Name'));
@@ -116,6 +123,10 @@ var octopus = {
     addAdmin: function() {
         admin.enableModel(view.getCatName(), model.allCats);
         admin.submitClick();
+    },
+    changeData: function(old_name, name, url, clicks) {
+        model.changeInfo(old_name, name, url, clicks);
+        view.render(name);
     }
 };
 
@@ -127,8 +138,13 @@ var model = {
         "Nicol": ["images/cat_three.jpeg", 0],
         "Rona": ["images/cat_four.jpg", 0],
         "Lola": ["images/cat_five.jpeg", 0]    
+    },
+
+    changeInfo: function(old_name, name, url, clicks) {
+        this.allCats[name] = [url, clicks];
+        delete this.allCats[old_name];
     }
-    // this function adds event listeners 
+    
 
 };
 octopus.init();
