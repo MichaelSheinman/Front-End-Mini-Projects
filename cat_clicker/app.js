@@ -80,7 +80,21 @@ var admin = {
         let b = document.createElement('input');
         b.type = "text";
         b.value = value;
+        b.id = text;
         document.body.appendChild(b);
+    },
+
+    submitClick: function() {
+        document.getElementById('submit').addEventListener('click', function() {
+            admin.clearField();
+        })
+    },
+
+    clearField: function() {
+        document.body.removeChild(document.querySelector('#Name'));
+        document.body.removeChild(document.querySelector('#URL'));        
+        document.body.removeChild(document.querySelector('#Clicks'));        
+
     }
     
 }
@@ -96,6 +110,7 @@ var octopus = {
     },
     addAdmin: function() {
         admin.enableModel(view.getCatName(), model.allCats);
+        admin.submitClick();
     }
 };
 
