@@ -21,20 +21,35 @@ var view = {
         this.image.src = model.allCats[cat][0];
         this.name.innerText = cat;
         this.clicks.innerText = "Clicks: " + model.allCats[cat][1];
+    },
+
+    buttonClick: function(allCats) {
+        for (let cat in allCats) {
+            document.getElementById(cat).addEventListener('click', function() {
+                view.render(cat);
+            })
+        };
+    },
+
+    imageClick: function() { 
+        document.getElementById('cat').addEventListener('click', function() {
+            let cat = document.getElementById('name').innerText;
+            model.allCats[cat][1] = model.allCats[cat][1] + 1;
+            view.render(cat);
+
+        })
     }
+
 
 };
 
 var octopus = {
     init: function() {
+        let allCats = model.allCats;
         view.init();
         view.createButtons(model.allCats);
-        model.buttonClick();
-        model.imageClick();
-    },
-
-    display: function(cat) {
-        view.render(cat);
+        view.buttonClick(allCats);
+        view.imageClick();
     }
 };
 
@@ -46,25 +61,7 @@ var model = {
         "Nicol": ["images/cat_three.jpeg", 0],
         "Rona": ["images/cat_four.jpg", 0],
         "Lola": ["images/cat_five.jpeg", 0]    
-    },
-
-    buttonClick: function() {
-        for (let cat in model.allCats) {
-            document.getElementById(cat).addEventListener('click', function() {
-                octopus.display(cat)
-            })
-        };
-    },
-
-    imageClick: function() { 
-        document.getElementById('cat').addEventListener('click', function() {
-            let cat = document.getElementById('name').innerText;
-            model.allCats[cat][1] = model.allCats[cat][1] + 1;
-            octopus.display(cat);
-
-        })
     }
-
     // this function adds event listeners 
 
 };
