@@ -49,6 +49,17 @@ var view = {
 var admin = {
     init: function() {
         this.isAdmin = false;
+        admin.clickListener();
+    },
+
+    clickListener: function() {
+        document.getElementById('admin').addEventListener('click', function() {
+            console.log(admin.isAdmin);
+            if (admin.isAdmin == false) {
+                console.log("hey")
+                octopus.addAdmin();
+            };
+        });
     },
 
     enableModel: function(cat, allCats) {
@@ -57,8 +68,6 @@ var admin = {
         this.createField("URL", allCats[cat][0]);
         this.createField("Clicks", allCats[cat][1]);
 
-        
-        
     },
     createField: function(text, value) {
         let name = document.createElement('p');
@@ -79,6 +88,9 @@ var octopus = {
         view.createButtons(model.allCats);
         view.buttonClick(allCats);
         view.imageClick();
+        admin.init()
+    },
+    addAdmin: function() {
         admin.enableModel(view.getCatName(), model.allCats);
     }
 };
