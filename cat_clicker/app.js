@@ -67,6 +67,10 @@ var admin = {
         this.createField("Name", cat);
         this.createField("URL", allCats[cat][0]);
         this.createField("Clicks", allCats[cat][1]);
+        submit = document.createElement('button');
+        submit.innerText = "Submit";
+        submit.id = "submit";
+        document.body.appendChild(submit);
 
     },
     createField: function(text, value) {
