@@ -148,7 +148,7 @@ var model = {
     },
 
     changeInfo: function(old_name, name, url, clicks) {
-        this.allCats[name] = [url, clicks];
+        this.allCats[name] = [url, parseInt(clicks)];
         delete this.allCats[old_name];
     }
     
