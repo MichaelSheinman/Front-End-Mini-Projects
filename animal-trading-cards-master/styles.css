@@ -1,0 +1,32 @@
+/* Style Sheet for animal */
+
+img {
+    width: 300px;
+}
+
+
+
+
+#fact {
+    font-style: italic;
+}
+
+ul {
+list-style-type: none;
+}
+
+body {
+    padding: 1em;
+}
+
+.ridge_border {
+    display:inline-block;
+    border-style: ridge;
+    padding: 1em;
+
+}
+
+.b {
+   font-weight:bold;
+
+}
