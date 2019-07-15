@@ -90,7 +90,11 @@ var admin = {
         submit = document.createElement('button');
         submit.innerText = "Save";
         submit.id = "submit";
+        cancel = document.createElement('button');
+        cancel.innerText = "Cancel";
+        cancel.id = "cancel"
         document.body.appendChild(submit);
+        document.body.appendChild(cancel);
 
     },
     createField: function(text, value) {
@@ -115,6 +119,11 @@ var admin = {
             octopus.changeData(old_name, new_name, new_url, new_clicks);
             admin.isAdmin = false;
         })
+
+        document.getElementById('cancel').addEventListener('click', function() {
+            admin.isAdmin = false;
+            admin.clearField(); 
+        })
     },
 
 
@@ -127,6 +136,7 @@ var admin = {
         document.body.removeChild(document.querySelector('#pURL'));       
         document.body.removeChild(document.querySelector('#pClicks'));
         document.body.removeChild(document.querySelector('#submit'));
+        document.body.removeChild(document.querySelector('#cancel'));
     }
     
 }
