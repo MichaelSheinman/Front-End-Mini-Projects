@@ -38,6 +38,18 @@ var view = {
             view.render(cat);
         })
     },
+    addListener: function(cat) {
+        document.getElementById(cat).addEventListener('click', function() {
+            view.render(cat);
+        })
+    },
+
+    removeListener: function(cat) {
+        document.getElementById(cat).removeEventListener('click', function() {
+            view.render(cat);
+        })
+    },
+
     getCatName: function() {
         return document.getElementById('name').innerText;
     },
@@ -131,8 +143,10 @@ var octopus = {
         admin.submitClick();
     },
     changeData: function(old_name, name, url, clicks) {
+        view.removeListener(old_name)
         model.changeInfo(old_name, name, url, clicks);
         view.changeButton(old_name, name);
+        view.addListener(name, old_name);
         view.render(name);
     },
 };
@@ -148,7 +162,7 @@ var model = {
     },
 
     changeInfo: function(old_name, name, url, clicks) {
-        this.allCats[name] = [url, parseInt(clicks)];
+        this.allCats[name] = [url, parseInt(clicks)];   // Adding the cat to allCats 
         delete this.allCats[old_name];
     }
     
