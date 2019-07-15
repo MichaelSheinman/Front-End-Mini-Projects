@@ -1,4 +1,6 @@
 var view = {
+
+    // variables used through the object
     init: function() {
         this.image = document.getElementById('cat');
         this.name = document.getElementById('name');
@@ -86,7 +88,7 @@ var admin = {
         this.createField("URL", allCats[cat][0]);
         this.createField("Clicks", allCats[cat][1]);
         submit = document.createElement('button');
-        submit.innerText = "Submit";
+        submit.innerText = "Save";
         submit.id = "submit";
         document.body.appendChild(submit);
 
