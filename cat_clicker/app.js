@@ -10,7 +10,6 @@ var view = {
         let all = "";
     
         for (let cat in allCats) {
-            console.log(cat);
             all += "<button id=\"" + cat + "\">" + cat + "</button>"
         };
         this.buttons.innerHTML = all;
@@ -18,6 +17,7 @@ var view = {
 
     // this render function makes the page changes 
     render: function(cat) {
+        console.log(cat);
         this.image.src = model.allCats[cat][0];
         this.name.innerText = cat;
         this.clicks.innerText = "Clicks: " + model.allCats[cat][1];
@@ -40,6 +40,13 @@ var view = {
     },
     getCatName: function() {
         return document.getElementById('name').innerText;
+    },
+    changeButton: function(old_name, new_name) {
+        console.log(old_name);
+        let w = document.getElementById(old_name);
+        w.id = new_name;
+        w.innerText = new_name;
+        document.getElementById('buttons').appendChild(w);
     }
 
 
@@ -54,7 +61,6 @@ var admin = {
 
     clickListener: function() {
         document.getElementById('admin').addEventListener('click', function() {
-            console.log(admin.isAdmin);
             if (admin.isAdmin == false) {
                 octopus.addAdmin();
                 admin.isAdmin = true;
@@ -87,12 +93,12 @@ var admin = {
 
     submitClick: function() {
         document.getElementById('submit').addEventListener('click', function() {
-            old_name = document.getElementById('name');
+            old_name = document.getElementById('name').innerText;
             new_name = document.getElementById('Name').value;
             new_url = document.getElementById('URL').value;
             new_clicks = document.getElementById('Clicks').value;
-            octopus.changeData(old_name, new_name, new_url, new_clicks);
             admin.clearField();
+            octopus.changeData(old_name, new_name, new_url, new_clicks);
             admin.isAdmin = false;
         })
     },
@@ -126,8 +132,9 @@ var octopus = {
     },
     changeData: function(old_name, name, url, clicks) {
         model.changeInfo(old_name, name, url, clicks);
+        view.changeButton(old_name, name);
         view.render(name);
-    }
+    },
 };
 
 
